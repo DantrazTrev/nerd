@@ -1,0 +1,7 @@
+/workspace/build/CMakeFiles/nerd.dir
+/workspace/build/CMakeFiles/edit_cache.dir
+/workspace/build/CMakeFiles/rebuild_cache.dir
+/workspace/build/CMakeFiles/list_install_components.dir
+/workspace/build/CMakeFiles/install.dir
+/workspace/build/CMakeFiles/install/local.dir
+/workspace/build/CMakeFiles/install/strip.dir
