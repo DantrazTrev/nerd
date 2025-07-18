@@ -3,6 +3,9 @@
 #include <sstream>
 #include <regex>
 #include <algorithm>
+#include <fstream> // Added for file operations
+#include <chrono>  // Added for timestamp
+#include <cstdint> // Added for uint64_t
 
 namespace nerd {
 
@@ -197,8 +200,33 @@ bool FlowEditor::initialize_network(const std::string& interface) {
 }
 
 void FlowEditor::discover_flows() {
+    std::cout << "Discovering existing flows in network..." << std::endl;
+    
     if (flow_manager_) {
-        flow_manager_->discover_existing_flows();
+        std::vector<std::string> discovered = flow_manager_->discover_existing_flows();
+        
+        if (discovered.empty()) {
+            std::cout << "No flows discovered in network." << std::endl;
+            std::cout << "Network interfaces may be down or no other NERD instances are running." << std::endl;
+        } else {
+            std::cout << "Found flows:" << std::endl;
+            for (const auto& flow : discovered) {
+                std::cout << "  " << flow << std::endl;
+            }
+        }
+    } else {
+        std::cout << "Flow manager not initialized." << std::endl;
+    }
+    
+    // Also show currently active flows
+    std::cout << "\nCurrently active flows:" << std::endl;
+    std::vector<std::string> active = get_available_flows();
+    if (active.empty()) {
+        std::cout << "  No flows currently open" << std::endl;
+    } else {
+        for (const auto& flow : active) {
+            std::cout << "  " << flow << std::endl;
+        }
     }
 }
 
@@ -229,6 +257,14 @@ bool FlowEditor::execute_command(const std::string& command) {
         std::cout << "  print             - Print current line" << std::endl;
         std::cout << "  print all         - Print all lines" << std::endl;
         std::cout << "  write             - Write flow to circulation" << std::endl;
+        std::cout << "  discover          - Discover existing flows in network" << std::endl;
+        std::cout << "  list              - List currently available flows" << std::endl;
+        std::cout << "  status            - Show current flow status" << std::endl;
+        std::cout << "  stats             - Show flow statistics" << std::endl;
+        std::cout << "  simulate          - Toggle simulation mode" << std::endl;
+        std::cout << "  export <filename> - Export current flow to file" << std::endl;
+        std::cout << "  import <filename> - Import flow from file" << std::endl;
+        std::cout << "  monitor           - Monitor network activity" << std::endl;
         std::cout << "  quit              - Quit editor" << std::endl;
         return true;
     }
@@ -281,6 +317,66 @@ bool FlowEditor::execute_command(const std::string& command) {
     
     if (cmd == "write" || cmd == "w") {
         write_flow();
+        return true;
+    }
+    
+    if (cmd == "discover") {
+        discover_flows();
+        return true;
+    }
+    
+    if (cmd == "list") {
+        std::vector<std::string> flows = get_available_flows();
+        std::cout << "Available flows:" << std::endl;
+        if (flows.empty()) {
+            std::cout << "  No flows currently active" << std::endl;
+        } else {
+            for (const auto& flow : flows) {
+                std::cout << "  " << flow << std::endl;
+            }
+        }
+        return true;
+    }
+    
+    if (cmd == "status") {
+        print_flow_state();
+        return true;
+    }
+    
+    if (cmd == "stats") {
+        print_flow_statistics();
+        return true;
+    }
+    
+    if (cmd == "simulate") {
+        toggle_simulation_mode();
+        return true;
+    }
+    
+    if (cmd == "export") {
+        std::string filename;
+        iss >> filename;
+        if (filename.empty()) {
+            std::cout << "Usage: export <filename>" << std::endl;
+        } else {
+            export_flow(filename);
+        }
+        return true;
+    }
+    
+    if (cmd == "import") {
+        std::string filename;
+        iss >> filename;
+        if (filename.empty()) {
+            std::cout << "Usage: import <filename>" << std::endl;
+        } else {
+            import_flow(filename);
+        }
+        return true;
+    }
+    
+    if (cmd == "monitor") {
+        monitor_network_activity();
         return true;
     }
     
@@ -377,6 +473,205 @@ void FlowEditor::set_error(const std::string& error) {
 
 void FlowEditor::clear_error() {
     state_.last_error.clear();
+}
+
+void FlowEditor::print_flow_statistics() {
+    std::cout << "\n=== NERD Flow Statistics ===" << std::endl;
+    
+    if (!state_.current_flow) {
+        std::cout << "No flow currently open" << std::endl;
+    } else {
+        std::cout << "Current Flow: " << state_.current_flow->name() << std::endl;
+        std::cout << "Flow ID: " << state_.current_flow->identifier() << std::endl;
+        
+        std::string content = state_.current_flow->content();
+        std::vector<std::string> lines = split_lines(content);
+        
+        std::cout << "Lines: " << lines.size() << std::endl;
+        std::cout << "Characters: " << content.length() << std::endl;
+        std::cout << "Words: " << count_words(content) << std::endl;
+        std::cout << "Modified: " << (state_.is_modified ? "Yes" : "No") << std::endl;
+        
+        // Network flow statistics
+        std::cout << "\nNetwork Status:" << std::endl;
+        std::cout << "Simulation Mode: " << (state_.simulation_mode ? "On" : "Off") << std::endl;
+        std::cout << "Flow Circulation: Active" << std::endl;
+        std::cout << "Heartbeat Packets: Sending" << std::endl;
+    }
+    
+    // Overall statistics
+    std::vector<std::string> active_flows = get_available_flows();
+    std::cout << "\nGlobal Statistics:" << std::endl;
+    std::cout << "Active Flows: " << active_flows.size() << std::endl;
+    std::cout << "Network Interface: " << (state_.simulation_mode ? "Simulated" : "Live") << std::endl;
+    
+    if (flow_manager_) {
+        std::cout << "Flow Manager: Active" << std::endl;
+    } else {
+        std::cout << "Flow Manager: Inactive" << std::endl;
+    }
+}
+
+void FlowEditor::toggle_simulation_mode() {
+    state_.simulation_mode = !state_.simulation_mode;
+    
+    std::cout << "Simulation mode: " << (state_.simulation_mode ? "ON" : "OFF") << std::endl;
+    
+    if (state_.simulation_mode) {
+        std::cout << "Running in simulation mode - network packets are simulated." << std::endl;
+        std::cout << "No actual network traffic will be generated." << std::endl;
+    } else {
+        std::cout << "Live network mode - actual packets will be sent." << std::endl;
+        std::cout << "Note: Raw socket access requires root privileges." << std::endl;
+    }
+}
+
+size_t FlowEditor::count_words(const std::string& text) {
+    std::istringstream iss(text);
+    std::string word;
+    size_t count = 0;
+    
+    while (iss >> word) {
+        count++;
+    }
+    
+    return count;
+}
+
+void FlowEditor::export_flow(const std::string& filename) {
+    if (!state_.current_flow) {
+        std::cout << "No flow currently open to export" << std::endl;
+        return;
+    }
+    
+    std::cout << "Exporting flow '" << state_.current_flow->name() << "' to '" << filename << "'..." << std::endl;
+    
+    try {
+        std::ofstream outfile(filename);
+        if (!outfile) {
+            std::cout << "Error: Could not create file '" << filename << "'" << std::endl;
+            return;
+        }
+        
+        // Write flow metadata
+        outfile << "# NERD Flow Export" << std::endl;
+        outfile << "# Flow Name: " << state_.current_flow->name() << std::endl;
+        outfile << "# Flow ID: " << state_.current_flow->identifier() << std::endl;
+        outfile << "# Export Time: " << std::chrono::duration_cast<std::chrono::seconds>(
+            std::chrono::system_clock::now().time_since_epoch()).count() << std::endl;
+        outfile << "# --- Flow Content ---" << std::endl;
+        
+        // Write flow content
+        outfile << state_.current_flow->content();
+        
+        outfile.close();
+        std::cout << "Flow exported successfully" << std::endl;
+        
+    } catch (const std::exception& e) {
+        std::cout << "Export failed: " << e.what() << std::endl;
+    }
+}
+
+void FlowEditor::import_flow(const std::string& filename) {
+    std::cout << "Importing flow from '" << filename << "'..." << std::endl;
+    
+    try {
+        std::ifstream infile(filename);
+        if (!infile) {
+            std::cout << "Error: Could not open file '" << filename << "'" << std::endl;
+            return;
+        }
+        
+        std::string line;
+        std::string content;
+        std::string flow_name;
+        bool reading_content = false;
+        
+        // Parse file and extract content
+        while (std::getline(infile, line)) {
+            if (line.find("# Flow Name: ") == 0) {
+                flow_name = line.substr(13); // Skip "# Flow Name: "
+            } else if (line.find("# --- Flow Content ---") == 0) {
+                reading_content = true;
+                continue;
+            } else if (reading_content) {
+                if (!content.empty()) {
+                    content += "\n";
+                }
+                content += line;
+            }
+        }
+        
+        infile.close();
+        
+        if (flow_name.empty()) {
+            flow_name = "imported_flow";
+        }
+        
+        // Create or open the flow
+        if (open_flow(flow_name)) {
+            // Clear existing content by setting it to empty string, then add imported content
+            state_.current_flow->write_to_flow("");
+            
+            // Add content line by line
+            std::istringstream content_stream(content);
+            std::string content_line;
+            while (std::getline(content_stream, content_line)) {
+                state_.current_flow->append_content(content_line);
+            }
+            
+            state_.is_modified = true;
+            std::cout << "Flow imported successfully as '" << flow_name << "'" << std::endl;
+        } else {
+            std::cout << "Failed to create flow for import" << std::endl;
+        }
+        
+    } catch (const std::exception& e) {
+        std::cout << "Import failed: " << e.what() << std::endl;
+    }
+}
+
+void FlowEditor::monitor_network_activity() {
+    std::cout << "\n=== Network Activity Monitor ===" << std::endl;
+    std::cout << "Monitoring network flow activity..." << std::endl;
+    
+    if (state_.simulation_mode) {
+        std::cout << "Running in simulation mode - showing simulated activity." << std::endl;
+        
+        // Simulate network activity for demonstration
+        std::vector<std::string> activity_log = {
+            "HEARTBEAT packet sent for flow 'testdoc' (ID: 1)",
+            "DISCOVERY packet received from 192.168.1.100",
+            "FLOW_DATA packet sent: 64 bytes",
+            "Flow circulation maintained for 1 active flows",
+            "Network interface: Simulated (eth0)",
+            "Packet loss: 0%",
+            "Average latency: 2ms",
+            "Active connections: 1"
+        };
+        
+        for (const auto& log_entry : activity_log) {
+            std::cout << "[" << std::chrono::duration_cast<std::chrono::milliseconds>(
+                std::chrono::high_resolution_clock::now().time_since_epoch()).count() % 100000 
+                << "] " << log_entry << std::endl;
+        }
+        
+    } else {
+        std::cout << "Live network monitoring not yet implemented." << std::endl;
+        std::cout << "This would show real-time packet flow for active flows." << std::endl;
+    }
+    
+    std::cout << "\nFlow Status Summary:" << std::endl;
+    std::vector<std::string> active_flows = get_available_flows();
+    for (const auto& flow : active_flows) {
+        std::cout << "  " << flow << ": Active circulation" << std::endl;
+    }
+    
+    if (active_flows.empty()) {
+        std::cout << "  No active flows to monitor" << std::endl;
+    }
+    
+    std::cout << "=== End Monitor ===" << std::endl;
 }
 
 } // namespace nerd

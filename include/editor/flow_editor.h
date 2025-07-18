@@ -13,9 +13,10 @@ struct EditorState {
     FlowFile* current_flow;
     int current_line;
     bool is_modified;
+    bool simulation_mode;
     std::string last_error;
     
-    EditorState() : current_flow(nullptr), current_line(0), is_modified(false) {}
+    EditorState() : current_flow(nullptr), current_line(0), is_modified(false), simulation_mode(false) {}
 };
 
 // FlowEditor class - provides ed-compatible interface for editing flows
@@ -75,11 +76,19 @@ public:
     void discover_flows();
     std::vector<std::string> get_available_flows() const;
     
+    // Enhanced features
+    void print_flow_statistics();
+    void toggle_simulation_mode();
+    void export_flow(const std::string& filename);
+    void import_flow(const std::string& filename);
+    void monitor_network_activity();
+    
 private:
     void handle_content_change(const std::string& new_content);
     void update_current_line();
     void set_error(const std::string& error);
     void clear_error();
+    size_t count_words(const std::string& text);
 };
 
 } // namespace nerd
