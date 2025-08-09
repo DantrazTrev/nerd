@@ -22,9 +22,13 @@ void print_usage(const char* program_name) {
     std::cout << "Flow Commands:" << std::endl;
     std::cout << "  open <flow_name>             Open a flow" << std::endl;
     std::cout << "  append <text>                Append text to current flow" << std::endl;
+    std::cout << "  insert <line> <text>         Insert text at a specific line" << std::endl;
     std::cout << "  delete <start> <end>         Delete lines from flow" << std::endl;
     std::cout << "  substitute <old> <new>       Replace text in flow" << std::endl;
     std::cout << "  print all                    Print all lines" << std::endl;
+    std::cout << "  discover                     Discover existing flows" << std::endl;
+    std::cout << "  list                         List active flows" << std::endl;
+    std::cout << "  status                       Show current flow status" << std::endl;
     std::cout << "  write                        Write changes to circulation" << std::endl;
     std::cout << "  quit                         Exit editor" << std::endl;
 }
