@@ -224,10 +224,14 @@ bool FlowEditor::execute_command(const std::string& command) {
         std::cout << "  open <flow_name>  - Open a flow" << std::endl;
         std::cout << "  close             - Close current flow" << std::endl;
         std::cout << "  append <text>     - Append text to flow" << std::endl;
+        std::cout << "  insert <line> <text> - Insert text at line" << std::endl;
         std::cout << "  delete <start> <end> - Delete lines" << std::endl;
         std::cout << "  substitute <pattern> <replacement> - Substitute text" << std::endl;
         std::cout << "  print             - Print current line" << std::endl;
         std::cout << "  print all         - Print all lines" << std::endl;
+        std::cout << "  discover          - Discover existing flows" << std::endl;
+        std::cout << "  list              - List active flows" << std::endl;
+        std::cout << "  status            - Show current flow status" << std::endl;
         std::cout << "  write             - Write flow to circulation" << std::endl;
         std::cout << "  quit              - Quit editor" << std::endl;
         return true;
@@ -254,6 +258,18 @@ bool FlowEditor::execute_command(const std::string& command) {
         return true;
     }
     
+    if (cmd == "insert" || cmd == "i") {
+        int line;
+        iss >> line;
+        std::string text;
+        std::getline(iss, text);
+        if (!text.empty() && text[0] == ' ') {
+            text = text.substr(1);
+        }
+        insert_line(line - 1, text);
+        return true;
+    }
+    
     if (cmd == "delete" || cmd == "d") {
         int start, end;
         iss >> start >> end;
@@ -276,6 +292,40 @@ bool FlowEditor::execute_command(const std::string& command) {
         } else {
             print_current_line();
         }
+        return true;
+    }
+    
+    if (cmd == "discover") {
+        if (flow_manager_) {
+            auto discovered = flow_manager_->discover_existing_flows();
+            if (discovered.empty()) {
+                std::cout << "No flows discovered" << std::endl;
+            } else {
+                std::cout << "Discovered flows:" << std::endl;
+                for (const auto& name : discovered) {
+                    std::cout << "  " << name << std::endl;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+    
+    if (cmd == "list" || cmd == "ls") {
+        auto names = get_available_flows();
+        if (names.empty()) {
+            std::cout << "No active flows" << std::endl;
+        } else {
+            std::cout << "Active flows:" << std::endl;
+            for (const auto& name : names) {
+                std::cout << "  " << name << std::endl;
+            }
+        }
+        return true;
+    }
+    
+    if (cmd == "status") {
+        print_flow_state();
         return true;
     }
     
