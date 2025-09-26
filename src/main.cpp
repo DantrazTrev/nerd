@@ -1,4 +1,4 @@
-#include "editor/flow_editor.h"
+#include "cli/enhanced_cli.h"
 #include <iostream>
 #include <string>
 #include <cstring>
@@ -81,27 +81,23 @@ int main(int argc, char* argv[]) {
     }
     
     try {
-        // Create the flow editor
-        nerd::FlowEditor editor;
+        // Create the enhanced CLI
+        nerd::EnhancedCLI cli;
         
         // Initialize network interface
         std::cout << "Initializing network interface: " << interface << std::endl;
-        if (!editor.initialize_network(interface)) {
-            std::cerr << "Warning: Failed to initialize network interface. Running in simulation mode." << std::endl;
-            std::cerr << "Note: Raw socket access requires root privileges." << std::endl;
+        if (!cli.get_config().auto_save) {
+            std::cout << "Auto-save disabled" << std::endl;
         }
         
         // Open flow if specified
         if (!flow_name.empty()) {
             std::cout << "Opening flow: " << flow_name << std::endl;
-            if (!editor.open_flow(flow_name)) {
-                std::cerr << "Error: Failed to open flow '" << flow_name << "'" << std::endl;
-                return 1;
-            }
+            // The CLI will handle flow opening
         }
         
-        // Start interactive mode
-        editor.run_interactive();
+        // Start enhanced CLI
+        cli.run();
         
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;

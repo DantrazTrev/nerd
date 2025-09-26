@@ -8,6 +8,9 @@ nerd: \
   CMakeFiles/nerd.dir/src/network/flow_manager.cpp.o \
   CMakeFiles/nerd.dir/src/editor/flow_editor.cpp.o \
   CMakeFiles/nerd.dir/src/core/flow_file.cpp.o \
+  CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o \
+  CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o \
+  CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o \
   /lib/x86_64-linux-gnu/libdl.a \
   /usr/lib/gcc/x86_64-linux-gnu/14/libstdc++.so \
   /lib/x86_64-linux-gnu/libm.so \
@@ -54,6 +57,12 @@ CMakeFiles/nerd.dir/src/network/flow_manager.cpp.o:
 CMakeFiles/nerd.dir/src/editor/flow_editor.cpp.o:
 
 CMakeFiles/nerd.dir/src/core/flow_file.cpp.o:
+
+CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o:
+
+CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o:
+
+CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o:
 
 /lib/x86_64-linux-gnu/libdl.a:
 

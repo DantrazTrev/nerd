@@ -57,4 +57,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/nerd.dir/DependInfo.cmake"
+  "CMakeFiles/nerd_test_runner.dir/DependInfo.cmake"
   )

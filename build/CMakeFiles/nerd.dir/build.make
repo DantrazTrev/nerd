@@ -156,6 +156,48 @@ CMakeFiles/nerd.dir/src/core/flow_file.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/nerd.dir/src/core/flow_file.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/src/core/flow_file.cpp -o CMakeFiles/nerd.dir/src/core/flow_file.cpp.s
 
+CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o: CMakeFiles/nerd.dir/flags.make
+CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o: /workspace/src/workflow/workflow_manager.cpp
+CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o: CMakeFiles/nerd.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o -MF CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o.d -o CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o -c /workspace/src/workflow/workflow_manager.cpp
+
+CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/src/workflow/workflow_manager.cpp > CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.i
+
+CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/src/workflow/workflow_manager.cpp -o CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.s
+
+CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o: CMakeFiles/nerd.dir/flags.make
+CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o: /workspace/src/persistence/flow_persistence.cpp
+CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o: CMakeFiles/nerd.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o -MF CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o.d -o CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o -c /workspace/src/persistence/flow_persistence.cpp
+
+CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/src/persistence/flow_persistence.cpp > CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.i
+
+CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/src/persistence/flow_persistence.cpp -o CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.s
+
+CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o: CMakeFiles/nerd.dir/flags.make
+CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o: /workspace/src/cli/enhanced_cli.cpp
+CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o: CMakeFiles/nerd.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o -MF CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o.d -o CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o -c /workspace/src/cli/enhanced_cli.cpp
+
+CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/src/cli/enhanced_cli.cpp > CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.i
+
+CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/src/cli/enhanced_cli.cpp -o CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.s
+
 # Object files for target nerd
 nerd_OBJECTS = \
 "CMakeFiles/nerd.dir/src/main.cpp.o" \
@@ -163,7 +205,10 @@ nerd_OBJECTS = \
 "CMakeFiles/nerd.dir/src/network/packet.cpp.o" \
 "CMakeFiles/nerd.dir/src/network/flow_manager.cpp.o" \
 "CMakeFiles/nerd.dir/src/editor/flow_editor.cpp.o" \
-"CMakeFiles/nerd.dir/src/core/flow_file.cpp.o"
+"CMakeFiles/nerd.dir/src/core/flow_file.cpp.o" \
+"CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o" \
+"CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o" \
+"CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o"
 
 # External object files for target nerd
 nerd_EXTERNAL_OBJECTS =
@@ -174,10 +219,13 @@ nerd: CMakeFiles/nerd.dir/src/network/packet.cpp.o
 nerd: CMakeFiles/nerd.dir/src/network/flow_manager.cpp.o
 nerd: CMakeFiles/nerd.dir/src/editor/flow_editor.cpp.o
 nerd: CMakeFiles/nerd.dir/src/core/flow_file.cpp.o
+nerd: CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o
+nerd: CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o
+nerd: CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o
 nerd: CMakeFiles/nerd.dir/build.make
 nerd: CMakeFiles/nerd.dir/compiler_depend.ts
 nerd: CMakeFiles/nerd.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable nerd"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable nerd"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/nerd.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

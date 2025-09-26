@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/nerd.dir/link.d"
+  "CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o"
+  "CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o.d"
   "CMakeFiles/nerd.dir/src/core/flow_file.cpp.o"
   "CMakeFiles/nerd.dir/src/core/flow_file.cpp.o.d"
   "CMakeFiles/nerd.dir/src/editor/flow_editor.cpp.o"
@@ -12,6 +14,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/nerd.dir/src/network/flow_manager.cpp.o.d"
   "CMakeFiles/nerd.dir/src/network/packet.cpp.o"
   "CMakeFiles/nerd.dir/src/network/packet.cpp.o.d"
+  "CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o"
+  "CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o.d"
+  "CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o"
+  "CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o.d"
   "nerd"
   "nerd.pdb"
 )

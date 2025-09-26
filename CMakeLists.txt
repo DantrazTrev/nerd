@@ -19,13 +19,33 @@ set(SOURCES
     src/network/flow_manager.cpp
     src/editor/flow_editor.cpp
     src/core/flow_file.cpp
+    src/workflow/workflow_manager.cpp
+    src/persistence/flow_persistence.cpp
+    src/cli/enhanced_cli.cpp
 )
 
 # Create executable
 add_executable(nerd ${SOURCES})
 
+# Create test runner executable
+add_executable(nerd_test_runner 
+    src/testing/test_runner.cpp
+    src/testing/test_framework.cpp
+    src/core/flow_file.cpp
+    src/network/flow.cpp
+    src/network/packet.cpp
+    src/network/flow_manager.cpp
+    src/workflow/workflow_manager.cpp
+    src/persistence/flow_persistence.cpp
+)
+
 # Link libraries
 target_link_libraries(nerd 
+    Threads::Threads
+    ${CMAKE_DL_LIBS}
+)
+
+target_link_libraries(nerd_test_runner 
     Threads::Threads
     ${CMAKE_DL_LIBS}
 )

@@ -1,0 +1,73 @@
+# NERD Enhanced Features Demo Script
+# This script demonstrates the new workflow, persistence, and CLI features
+
+# Start the enhanced CLI
+nerd
+
+# Show help to see all available commands
+help
+
+# Show system status
+system status
+
+# Create a new flow
+open demo_flow
+
+# Add some content
+append Hello, this is a living network file!
+append It exists as circulating packets in the network.
+append This demonstrates the revolutionary concept of files as network processes.
+
+# Show flow information
+info
+
+# Show flow status
+status
+
+# List workflows
+workflow list
+
+# Run cost analysis
+cost
+
+# Save flow to persistence
+save
+
+# Create a backup
+backup
+
+# Create a checkpoint
+checkpoint create
+
+# List checkpoints
+checkpoint list
+
+# Show system information
+system info
+
+# Show performance statistics
+system performance
+
+# Show configuration
+config show
+
+# Enable verbose mode
+config set verbose_mode true
+
+# Show network status
+system network
+
+# Clean up old data
+system cleanup
+
+# Show command history
+history
+
+# Close the flow
+close
+
+# List active flows
+list
+
+# Exit
+quit
