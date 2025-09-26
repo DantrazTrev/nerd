@@ -64,10 +64,12 @@ CMAKE_BINARY_DIR = /workspace/build
 
 # The main recursive "all" target.
 all: CMakeFiles/nerd.dir/all
+all: CMakeFiles/nerd_test_runner.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/nerd.dir/codegen
+codegen: CMakeFiles/nerd_test_runner.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -76,6 +78,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/nerd.dir/clean
+clean: CMakeFiles/nerd_test_runner.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -85,12 +88,12 @@ clean: CMakeFiles/nerd.dir/clean
 CMakeFiles/nerd.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspace/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target nerd"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspace/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target nerd"
 .PHONY : CMakeFiles/nerd.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/nerd.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/build/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/nerd.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/build/CMakeFiles 0
 .PHONY : CMakeFiles/nerd.dir/rule
@@ -102,13 +105,45 @@ nerd: CMakeFiles/nerd.dir/rule
 # codegen rule for target.
 CMakeFiles/nerd.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspace/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Finished codegen for target nerd"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspace/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Finished codegen for target nerd"
 .PHONY : CMakeFiles/nerd.dir/codegen
 
 # clean rule for target.
 CMakeFiles/nerd.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/clean
 .PHONY : CMakeFiles/nerd.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/nerd_test_runner.dir
+
+# All Build rule for target.
+CMakeFiles/nerd_test_runner.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspace/build/CMakeFiles --progress-num=11,12,13,14,15,16,17,18,19 "Built target nerd_test_runner"
+.PHONY : CMakeFiles/nerd_test_runner.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/nerd_test_runner.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/build/CMakeFiles 9
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/nerd_test_runner.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/build/CMakeFiles 0
+.PHONY : CMakeFiles/nerd_test_runner.dir/rule
+
+# Convenience name for target.
+nerd_test_runner: CMakeFiles/nerd_test_runner.dir/rule
+.PHONY : nerd_test_runner
+
+# codegen rule for target.
+CMakeFiles/nerd_test_runner.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspace/build/CMakeFiles --progress-num=11,12,13,14,15,16,17,18,19 "Finished codegen for target nerd_test_runner"
+.PHONY : CMakeFiles/nerd_test_runner.dir/codegen
+
+# clean rule for target.
+CMakeFiles/nerd_test_runner.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/clean
+.PHONY : CMakeFiles/nerd_test_runner.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

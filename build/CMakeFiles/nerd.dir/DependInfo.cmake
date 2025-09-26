@@ -8,12 +8,15 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/workspace/src/cli/enhanced_cli.cpp" "CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o" "gcc" "CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o.d"
   "/workspace/src/core/flow_file.cpp" "CMakeFiles/nerd.dir/src/core/flow_file.cpp.o" "gcc" "CMakeFiles/nerd.dir/src/core/flow_file.cpp.o.d"
   "/workspace/src/editor/flow_editor.cpp" "CMakeFiles/nerd.dir/src/editor/flow_editor.cpp.o" "gcc" "CMakeFiles/nerd.dir/src/editor/flow_editor.cpp.o.d"
   "/workspace/src/main.cpp" "CMakeFiles/nerd.dir/src/main.cpp.o" "gcc" "CMakeFiles/nerd.dir/src/main.cpp.o.d"
   "/workspace/src/network/flow.cpp" "CMakeFiles/nerd.dir/src/network/flow.cpp.o" "gcc" "CMakeFiles/nerd.dir/src/network/flow.cpp.o.d"
   "/workspace/src/network/flow_manager.cpp" "CMakeFiles/nerd.dir/src/network/flow_manager.cpp.o" "gcc" "CMakeFiles/nerd.dir/src/network/flow_manager.cpp.o.d"
   "/workspace/src/network/packet.cpp" "CMakeFiles/nerd.dir/src/network/packet.cpp.o" "gcc" "CMakeFiles/nerd.dir/src/network/packet.cpp.o.d"
+  "/workspace/src/persistence/flow_persistence.cpp" "CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o" "gcc" "CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o.d"
+  "/workspace/src/workflow/workflow_manager.cpp" "CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o" "gcc" "CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o.d"
   "" "nerd" "gcc" "CMakeFiles/nerd.dir/link.d"
   )
 

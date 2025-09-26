@@ -174,12 +174,50 @@ nerd/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/build
 .PHONY : nerd/fast
 
+#=============================================================================
+# Target rules for targets named nerd_test_runner
+
+# Build rule for target.
+nerd_test_runner: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nerd_test_runner
+.PHONY : nerd_test_runner
+
+# fast build rule for target.
+nerd_test_runner/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/build
+.PHONY : nerd_test_runner/fast
+
+src/cli/enhanced_cli.o: src/cli/enhanced_cli.cpp.o
+.PHONY : src/cli/enhanced_cli.o
+
+# target to build an object file
+src/cli/enhanced_cli.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.o
+.PHONY : src/cli/enhanced_cli.cpp.o
+
+src/cli/enhanced_cli.i: src/cli/enhanced_cli.cpp.i
+.PHONY : src/cli/enhanced_cli.i
+
+# target to preprocess a source file
+src/cli/enhanced_cli.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.i
+.PHONY : src/cli/enhanced_cli.cpp.i
+
+src/cli/enhanced_cli.s: src/cli/enhanced_cli.cpp.s
+.PHONY : src/cli/enhanced_cli.s
+
+# target to generate assembly for a file
+src/cli/enhanced_cli.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/cli/enhanced_cli.cpp.s
+.PHONY : src/cli/enhanced_cli.cpp.s
+
 src/core/flow_file.o: src/core/flow_file.cpp.o
 .PHONY : src/core/flow_file.o
 
 # target to build an object file
 src/core/flow_file.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/core/flow_file.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/core/flow_file.cpp.o
 .PHONY : src/core/flow_file.cpp.o
 
 src/core/flow_file.i: src/core/flow_file.cpp.i
@@ -188,6 +226,7 @@ src/core/flow_file.i: src/core/flow_file.cpp.i
 # target to preprocess a source file
 src/core/flow_file.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/core/flow_file.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/core/flow_file.cpp.i
 .PHONY : src/core/flow_file.cpp.i
 
 src/core/flow_file.s: src/core/flow_file.cpp.s
@@ -196,6 +235,7 @@ src/core/flow_file.s: src/core/flow_file.cpp.s
 # target to generate assembly for a file
 src/core/flow_file.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/core/flow_file.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/core/flow_file.cpp.s
 .PHONY : src/core/flow_file.cpp.s
 
 src/editor/flow_editor.o: src/editor/flow_editor.cpp.o
@@ -252,6 +292,7 @@ src/network/flow.o: src/network/flow.cpp.o
 # target to build an object file
 src/network/flow.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/network/flow.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/network/flow.cpp.o
 .PHONY : src/network/flow.cpp.o
 
 src/network/flow.i: src/network/flow.cpp.i
@@ -260,6 +301,7 @@ src/network/flow.i: src/network/flow.cpp.i
 # target to preprocess a source file
 src/network/flow.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/network/flow.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/network/flow.cpp.i
 .PHONY : src/network/flow.cpp.i
 
 src/network/flow.s: src/network/flow.cpp.s
@@ -268,6 +310,7 @@ src/network/flow.s: src/network/flow.cpp.s
 # target to generate assembly for a file
 src/network/flow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/network/flow.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/network/flow.cpp.s
 .PHONY : src/network/flow.cpp.s
 
 src/network/flow_manager.o: src/network/flow_manager.cpp.o
@@ -276,6 +319,7 @@ src/network/flow_manager.o: src/network/flow_manager.cpp.o
 # target to build an object file
 src/network/flow_manager.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/network/flow_manager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/network/flow_manager.cpp.o
 .PHONY : src/network/flow_manager.cpp.o
 
 src/network/flow_manager.i: src/network/flow_manager.cpp.i
@@ -284,6 +328,7 @@ src/network/flow_manager.i: src/network/flow_manager.cpp.i
 # target to preprocess a source file
 src/network/flow_manager.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/network/flow_manager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/network/flow_manager.cpp.i
 .PHONY : src/network/flow_manager.cpp.i
 
 src/network/flow_manager.s: src/network/flow_manager.cpp.s
@@ -292,6 +337,7 @@ src/network/flow_manager.s: src/network/flow_manager.cpp.s
 # target to generate assembly for a file
 src/network/flow_manager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/network/flow_manager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/network/flow_manager.cpp.s
 .PHONY : src/network/flow_manager.cpp.s
 
 src/network/packet.o: src/network/packet.cpp.o
@@ -300,6 +346,7 @@ src/network/packet.o: src/network/packet.cpp.o
 # target to build an object file
 src/network/packet.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/network/packet.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/network/packet.cpp.o
 .PHONY : src/network/packet.cpp.o
 
 src/network/packet.i: src/network/packet.cpp.i
@@ -308,6 +355,7 @@ src/network/packet.i: src/network/packet.cpp.i
 # target to preprocess a source file
 src/network/packet.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/network/packet.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/network/packet.cpp.i
 .PHONY : src/network/packet.cpp.i
 
 src/network/packet.s: src/network/packet.cpp.s
@@ -316,7 +364,110 @@ src/network/packet.s: src/network/packet.cpp.s
 # target to generate assembly for a file
 src/network/packet.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/network/packet.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/network/packet.cpp.s
 .PHONY : src/network/packet.cpp.s
+
+src/persistence/flow_persistence.o: src/persistence/flow_persistence.cpp.o
+.PHONY : src/persistence/flow_persistence.o
+
+# target to build an object file
+src/persistence/flow_persistence.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/persistence/flow_persistence.cpp.o
+.PHONY : src/persistence/flow_persistence.cpp.o
+
+src/persistence/flow_persistence.i: src/persistence/flow_persistence.cpp.i
+.PHONY : src/persistence/flow_persistence.i
+
+# target to preprocess a source file
+src/persistence/flow_persistence.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/persistence/flow_persistence.cpp.i
+.PHONY : src/persistence/flow_persistence.cpp.i
+
+src/persistence/flow_persistence.s: src/persistence/flow_persistence.cpp.s
+.PHONY : src/persistence/flow_persistence.s
+
+# target to generate assembly for a file
+src/persistence/flow_persistence.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/persistence/flow_persistence.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/persistence/flow_persistence.cpp.s
+.PHONY : src/persistence/flow_persistence.cpp.s
+
+src/testing/test_framework.o: src/testing/test_framework.cpp.o
+.PHONY : src/testing/test_framework.o
+
+# target to build an object file
+src/testing/test_framework.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/testing/test_framework.cpp.o
+.PHONY : src/testing/test_framework.cpp.o
+
+src/testing/test_framework.i: src/testing/test_framework.cpp.i
+.PHONY : src/testing/test_framework.i
+
+# target to preprocess a source file
+src/testing/test_framework.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/testing/test_framework.cpp.i
+.PHONY : src/testing/test_framework.cpp.i
+
+src/testing/test_framework.s: src/testing/test_framework.cpp.s
+.PHONY : src/testing/test_framework.s
+
+# target to generate assembly for a file
+src/testing/test_framework.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/testing/test_framework.cpp.s
+.PHONY : src/testing/test_framework.cpp.s
+
+src/testing/test_runner.o: src/testing/test_runner.cpp.o
+.PHONY : src/testing/test_runner.o
+
+# target to build an object file
+src/testing/test_runner.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/testing/test_runner.cpp.o
+.PHONY : src/testing/test_runner.cpp.o
+
+src/testing/test_runner.i: src/testing/test_runner.cpp.i
+.PHONY : src/testing/test_runner.i
+
+# target to preprocess a source file
+src/testing/test_runner.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/testing/test_runner.cpp.i
+.PHONY : src/testing/test_runner.cpp.i
+
+src/testing/test_runner.s: src/testing/test_runner.cpp.s
+.PHONY : src/testing/test_runner.s
+
+# target to generate assembly for a file
+src/testing/test_runner.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/testing/test_runner.cpp.s
+.PHONY : src/testing/test_runner.cpp.s
+
+src/workflow/workflow_manager.o: src/workflow/workflow_manager.cpp.o
+.PHONY : src/workflow/workflow_manager.o
+
+# target to build an object file
+src/workflow/workflow_manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/workflow/workflow_manager.cpp.o
+.PHONY : src/workflow/workflow_manager.cpp.o
+
+src/workflow/workflow_manager.i: src/workflow/workflow_manager.cpp.i
+.PHONY : src/workflow/workflow_manager.i
+
+# target to preprocess a source file
+src/workflow/workflow_manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/workflow/workflow_manager.cpp.i
+.PHONY : src/workflow/workflow_manager.cpp.i
+
+src/workflow/workflow_manager.s: src/workflow/workflow_manager.cpp.s
+.PHONY : src/workflow/workflow_manager.s
+
+# target to generate assembly for a file
+src/workflow/workflow_manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/workflow/workflow_manager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd_test_runner.dir/build.make CMakeFiles/nerd_test_runner.dir/src/workflow/workflow_manager.cpp.s
+.PHONY : src/workflow/workflow_manager.cpp.s
 
 # Help Target
 help:
@@ -331,6 +482,10 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... nerd"
+	@echo "... nerd_test_runner"
+	@echo "... src/cli/enhanced_cli.o"
+	@echo "... src/cli/enhanced_cli.i"
+	@echo "... src/cli/enhanced_cli.s"
 	@echo "... src/core/flow_file.o"
 	@echo "... src/core/flow_file.i"
 	@echo "... src/core/flow_file.s"
@@ -349,6 +504,18 @@ help:
 	@echo "... src/network/packet.o"
 	@echo "... src/network/packet.i"
 	@echo "... src/network/packet.s"
+	@echo "... src/persistence/flow_persistence.o"
+	@echo "... src/persistence/flow_persistence.i"
+	@echo "... src/persistence/flow_persistence.s"
+	@echo "... src/testing/test_framework.o"
+	@echo "... src/testing/test_framework.i"
+	@echo "... src/testing/test_framework.s"
+	@echo "... src/testing/test_runner.o"
+	@echo "... src/testing/test_runner.i"
+	@echo "... src/testing/test_runner.s"
+	@echo "... src/workflow/workflow_manager.o"
+	@echo "... src/workflow/workflow_manager.i"
+	@echo "... src/workflow/workflow_manager.s"
 .PHONY : help
 
 

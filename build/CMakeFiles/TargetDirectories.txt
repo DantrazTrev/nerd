@@ -1,4 +1,5 @@
 /workspace/build/CMakeFiles/nerd.dir
+/workspace/build/CMakeFiles/nerd_test_runner.dir
 /workspace/build/CMakeFiles/edit_cache.dir
 /workspace/build/CMakeFiles/rebuild_cache.dir
 /workspace/build/CMakeFiles/list_install_components.dir
