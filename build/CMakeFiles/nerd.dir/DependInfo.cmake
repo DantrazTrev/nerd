@@ -8,7 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/workspace/src/core/config.cpp" "CMakeFiles/nerd.dir/src/core/config.cpp.o" "gcc" "CMakeFiles/nerd.dir/src/core/config.cpp.o.d"
   "/workspace/src/core/flow_file.cpp" "CMakeFiles/nerd.dir/src/core/flow_file.cpp.o" "gcc" "CMakeFiles/nerd.dir/src/core/flow_file.cpp.o.d"
+  "/workspace/src/core/logger.cpp" "CMakeFiles/nerd.dir/src/core/logger.cpp.o" "gcc" "CMakeFiles/nerd.dir/src/core/logger.cpp.o.d"
   "/workspace/src/editor/flow_editor.cpp" "CMakeFiles/nerd.dir/src/editor/flow_editor.cpp.o" "gcc" "CMakeFiles/nerd.dir/src/editor/flow_editor.cpp.o.d"
   "/workspace/src/main.cpp" "CMakeFiles/nerd.dir/src/main.cpp.o" "gcc" "CMakeFiles/nerd.dir/src/main.cpp.o.d"
   "/workspace/src/network/flow.cpp" "CMakeFiles/nerd.dir/src/network/flow.cpp.o" "gcc" "CMakeFiles/nerd.dir/src/network/flow.cpp.o.d"

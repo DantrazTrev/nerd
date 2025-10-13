@@ -174,6 +174,30 @@ nerd/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/build
 .PHONY : nerd/fast
 
+src/core/config.o: src/core/config.cpp.o
+.PHONY : src/core/config.o
+
+# target to build an object file
+src/core/config.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/core/config.cpp.o
+.PHONY : src/core/config.cpp.o
+
+src/core/config.i: src/core/config.cpp.i
+.PHONY : src/core/config.i
+
+# target to preprocess a source file
+src/core/config.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/core/config.cpp.i
+.PHONY : src/core/config.cpp.i
+
+src/core/config.s: src/core/config.cpp.s
+.PHONY : src/core/config.s
+
+# target to generate assembly for a file
+src/core/config.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/core/config.cpp.s
+.PHONY : src/core/config.cpp.s
+
 src/core/flow_file.o: src/core/flow_file.cpp.o
 .PHONY : src/core/flow_file.o
 
@@ -197,6 +221,30 @@ src/core/flow_file.s: src/core/flow_file.cpp.s
 src/core/flow_file.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/core/flow_file.cpp.s
 .PHONY : src/core/flow_file.cpp.s
+
+src/core/logger.o: src/core/logger.cpp.o
+.PHONY : src/core/logger.o
+
+# target to build an object file
+src/core/logger.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/core/logger.cpp.o
+.PHONY : src/core/logger.cpp.o
+
+src/core/logger.i: src/core/logger.cpp.i
+.PHONY : src/core/logger.i
+
+# target to preprocess a source file
+src/core/logger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/core/logger.cpp.i
+.PHONY : src/core/logger.cpp.i
+
+src/core/logger.s: src/core/logger.cpp.s
+.PHONY : src/core/logger.s
+
+# target to generate assembly for a file
+src/core/logger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nerd.dir/build.make CMakeFiles/nerd.dir/src/core/logger.cpp.s
+.PHONY : src/core/logger.cpp.s
 
 src/editor/flow_editor.o: src/editor/flow_editor.cpp.o
 .PHONY : src/editor/flow_editor.o
@@ -331,9 +379,15 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... nerd"
+	@echo "... src/core/config.o"
+	@echo "... src/core/config.i"
+	@echo "... src/core/config.s"
 	@echo "... src/core/flow_file.o"
 	@echo "... src/core/flow_file.i"
 	@echo "... src/core/flow_file.s"
+	@echo "... src/core/logger.o"
+	@echo "... src/core/logger.i"
+	@echo "... src/core/logger.s"
 	@echo "... src/editor/flow_editor.o"
 	@echo "... src/editor/flow_editor.i"
 	@echo "... src/editor/flow_editor.s"

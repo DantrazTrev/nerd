@@ -1,7 +1,11 @@
 #include "editor/flow_editor.h"
+#include "core/config.h"
+#include "core/logger.h"
 #include <iostream>
 #include <string>
 #include <cstring>
+#include <signal.h>
+#include <unistd.h>
 
 void print_usage(const char* program_name) {
     std::cout << "NERD: Network-Flow Editor" << std::endl;
@@ -34,13 +38,31 @@ void print_usage(const char* program_name) {
 }
 
 void print_version() {
-    std::cout << "NERD: Network-Flow Editor v0.1.0" << std::endl;
+    std::cout << "NERD: Network-Flow Editor v1.0.0" << std::endl;
     std::cout << "Revolutionary file editing for living network processes" << std::endl;
+    std::cout << "Production Ready" << std::endl;
+}
+
+// Signal handler for graceful shutdown
+static nerd::FlowEditor* g_editor = nullptr;
+
+void signal_handler(int sig) {
+    if (sig == SIGINT || sig == SIGTERM) {
+        LOG_INFO("Received signal " + std::to_string(sig) + ", shutting down gracefully");
+        if (g_editor) {
+            g_editor->quit_editor();
+        }
+        exit(0);
+    }
 }
 
 int main(int argc, char* argv[]) {
-    std::string interface = "eth0";
+    // Initialize configuration
+    nerd::Config& config = nerd::Config::instance();
+    std::string config_file = "/etc/nerd/nerd.conf";
+    std::string interface;
     std::string flow_name;
+    bool debug = false;
     
     // Parse command line arguments
     for (int i = 1; i < argc; ++i) {
@@ -56,7 +78,18 @@ int main(int argc, char* argv[]) {
             return 0;
         }
         
-        if (arg == "-i" || arg == "--interface") {
+        if (arg == "-c" || arg == "--config") {
+            if (i + 1 < argc) {
+                config_file = argv[++i];
+            } else {
+                std::cerr << "Error: Missing config file after " << arg << std::endl;
+                return 1;
+            }
+        }
+        else if (arg == "-d" || arg == "--debug") {
+            debug = true;
+        }
+        else if (arg == "-i" || arg == "--interface") {
             if (i + 1 < argc) {
                 interface = argv[++i];
             } else {
@@ -80,36 +113,82 @@ int main(int argc, char* argv[]) {
         }
     }
     
+    // Load configuration
+    if (!config.load(config_file)) {
+        std::cerr << "Failed to load configuration" << std::endl;
+        return 1;
+    }
+    
+    // Initialize logging
+    nerd::LogLevel log_level = debug ? nerd::LogLevel::DEBUG : config.logging().log_level;
+    nerd::Logger::instance().initialize(
+        config.logging().log_file,
+        log_level,
+        config.logging().log_to_console,
+        config.logging().log_to_file
+    );
+    
+    LOG_INFO("NERD v1.0.0 starting up");
+    LOG_INFO("Configuration loaded from: " + config_file);
+    
+    // Set up signal handlers
+    signal(SIGINT, signal_handler);
+    signal(SIGTERM, signal_handler);
+    
+    // Use interface from command line or config
+    if (interface.empty()) {
+        interface = config.network().interface;
+    }
+    
     try {
         // Create the flow editor
         nerd::FlowEditor editor;
+        g_editor = &editor;
         
         // Initialize network interface
-        std::cout << "Initializing network interface: " << interface << std::endl;
+        LOG_INFO("Initializing network interface: " + interface);
         if (!editor.initialize_network(interface)) {
-            std::cerr << "Warning: Failed to initialize network interface. Running in simulation mode." << std::endl;
-            std::cerr << "Note: Raw socket access requires root privileges." << std::endl;
+            if (geteuid() != 0) {
+                LOG_ERROR("Failed to initialize network interface. Root privileges required for raw socket access.");
+                std::cerr << "Error: This program requires root privileges for network operations." << std::endl;
+                std::cerr << "Please run with sudo: sudo " << argv[0] << std::endl;
+                return 1;
+            } else {
+                LOG_WARNING("Failed to initialize network interface. Running in simulation mode.");
+                std::cerr << "Warning: Failed to initialize network interface. Running in simulation mode." << std::endl;
+            }
+        } else {
+            LOG_INFO("Network interface initialized successfully");
         }
         
         // Open flow if specified
         if (!flow_name.empty()) {
-            std::cout << "Opening flow: " << flow_name << std::endl;
+            LOG_INFO("Opening flow: " + flow_name);
             if (!editor.open_flow(flow_name)) {
+                LOG_ERROR("Failed to open flow: " + flow_name);
                 std::cerr << "Error: Failed to open flow '" << flow_name << "'" << std::endl;
                 return 1;
             }
+            LOG_INFO("Flow opened successfully: " + flow_name);
         }
         
         // Start interactive mode
+        LOG_INFO("Starting interactive mode");
         editor.run_interactive();
         
+        LOG_INFO("NERD shutting down gracefully");
+        g_editor = nullptr;
+        
     } catch (const std::exception& e) {
+        LOG_CRITICAL("Fatal error: " + std::string(e.what()));
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     } catch (...) {
+        LOG_CRITICAL("Unknown fatal exception occurred");
         std::cerr << "Error: Unknown exception occurred" << std::endl;
         return 1;
     }
     
+    LOG_INFO("NERD shutdown complete");
     return 0;
 }

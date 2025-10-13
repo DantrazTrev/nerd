@@ -19,6 +19,8 @@ set(SOURCES
     src/network/flow_manager.cpp
     src/editor/flow_editor.cpp
     src/core/flow_file.cpp
+    src/core/logger.cpp
+    src/core/config.cpp
 )
 
 # Create executable

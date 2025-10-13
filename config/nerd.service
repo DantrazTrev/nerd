@@ -1,0 +1,37 @@
+[Unit]
+Description=NERD - Network-Flow Editor Service
+Documentation=https://github.com/yourusername/nerd
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/var/lib/nerd
+ExecStart=/usr/local/bin/nerd -c /etc/nerd/nerd.conf
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=nerd
+
+# Security settings
+PrivateTmp=true
+NoNewPrivileges=false
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/nerd /var/log
+CapabilityBoundingSet=CAP_NET_RAW CAP_NET_ADMIN CAP_SYS_ADMIN
+AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=512
+CPUAccounting=true
+MemoryAccounting=true
+MemoryMax=1G
+
+[Install]
+WantedBy=multi-user.target
