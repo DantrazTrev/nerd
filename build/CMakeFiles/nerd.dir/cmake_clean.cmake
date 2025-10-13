@@ -1,7 +1,11 @@
 file(REMOVE_RECURSE
   "CMakeFiles/nerd.dir/link.d"
+  "CMakeFiles/nerd.dir/src/core/config.cpp.o"
+  "CMakeFiles/nerd.dir/src/core/config.cpp.o.d"
   "CMakeFiles/nerd.dir/src/core/flow_file.cpp.o"
   "CMakeFiles/nerd.dir/src/core/flow_file.cpp.o.d"
+  "CMakeFiles/nerd.dir/src/core/logger.cpp.o"
+  "CMakeFiles/nerd.dir/src/core/logger.cpp.o.d"
   "CMakeFiles/nerd.dir/src/editor/flow_editor.cpp.o"
   "CMakeFiles/nerd.dir/src/editor/flow_editor.cpp.o.d"
   "CMakeFiles/nerd.dir/src/main.cpp.o"
